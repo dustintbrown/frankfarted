@@ -7,205 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Kids Koder</title>
+    <title>Frank Farted</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="styles/style.css">
     <script src="https://pagecdn.io/lib/ace/1.4.6/ace.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="smoke.js"></script>
-    <style>
-        html {
-            font-size: 36px;
-            height: 100%;
-            color: #333333;
-            font-family: sans-serif;
-        }
-
-        body {
-            height: 100%;
-            margin:0;
-        }
-        
-        .header{
-            padding:15px 20px 15px 20px;
-            background-color: #666666;
-            color: white;
-            
-        }
-
-        .main_content {
-            display: flex;
-            margin-left: 20px;
-            margin-top: 10px;
-        }
-
-        .box {
-            height: 550px;
-            width: 550px;
-            border: 1px solid #333333;
-            overflow: hidden;
-            background-position: center;
-            background-image: linear-gradient(0deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent),
-                linear-gradient(90deg, transparent 24%, rgba(0, 0, 0, .05) 25%, rgba(0, 0, 0, .05) 26%, transparent 27%, transparent 74%, rgba(0, 0, 0, .05) 75%, rgba(0, 0, 0, .05) 76%, transparent 77%, transparent);
-            background-size: 100px 100px;
-            position: relative;
-        }
-
-        #play_button {
-            color: green;
-        }
-
-        .nav-bar {
-            justify-content: space-between;
-            display: flex;
-            width: 550px;
-            height: 50px;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -khtml-user-select: none;
-            -ms-user-select: none;
-        }
-
-        .nav-bar i {
-            padding-left: 20px;
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        .nav-bar :first-child {
-            padding-left: 5px;
-        }
-
-        .nav-bar :last-child {
-            padding-right: 5px;
-        }
-
-        #editor {
-            width: 550px;
-            height: 552px;
-            margin-right: 30px;
-        }
-
-        #game {
-            background-color: transparent;
-        }
-
-        #animate {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            top: 250px;
-            left: 250px;
-            border-radius: 25px;
-
-            display: inline-block;
-            perspective: 1200px;
-            perspective-origin: 50% 50%;
-            transform-style: preserve-3d;
-            transform: rotateY(0.01deg);
-        }
-
-        .runningLine {
-            position: absolute;
-            background: rgba(100, 200, 100, 0.5);
-            z-index: 20
-        }
-
-
-        @keyframes move-eye-skew {
-            0% {
-                transform: none;
-            }
-
-            20% {
-                transform: translateX(-11px) translateY(5px) skewX(15deg) skewY(-10deg) scale(0.95);
-            }
-
-            25%,
-            44% {
-                transform: none;
-            }
-
-            50%,
-            60% {
-                transform: translateX(11px) translateY(-7px) skewX(5deg) skewY(2deg) scaleX(0.95);
-            }
-
-            66%,
-            100% {
-                transform: none;
-            }
-        }
-
-        .ball {
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            border-radius: 50%;
-            position: relative;
-            background: radial-gradient(circle at 50% 40%, #fcfcfc, #efeff1 66%, #9b5050 100%);
-        }
-
-        .ball:after {
-            content: "";
-            position: absolute;
-            top: 5%;
-            left: 10%;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8) 14%, rgba(255, 255, 255, 0) 24%);
-            transform: translateX(-20px) translateY(-11px) skewX(-20deg);
-        }
-
-        .iris {
-            width: 40%;
-            height: 40%;
-            margin: 30%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 50% 50%, #208ab4 0%, #6fbfff 30%, #4381b2 100%);
-            transform: translateX(68px) translateY(-60px) skewX(15deg) skewY(2deg);
-            position: absolute;
-            animation: move-eye-skew 5s ease-out infinite;
-        }
-
-        .iris:before {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 37.5%;
-            height: 37.5%;
-            border-radius: 50%;
-            top: 31.25%;
-            left: 31.25%;
-            background: black;
-        }
-
-        .iris:after {
-            content: "";
-            display: block;
-            position: absolute;
-            width: 31.25%;
-            height: 31.25%;
-            border-radius: 50%;
-            top: 18.75%;
-            left: 18.75%;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .ball .shadow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-            transform: rotateX(90deg) translateZ(-25px);
-            z-index: -1;
-        }
-
-    </style>
+    <script src="scripts/smoke.js"></script>
     <script>
-        var isPlayingSound = false;
-
         function stayInBounds() {
             let left = parseInt($('#animate').css('left').replace("px", ""));
             let top = parseInt($('#animate').css('top').replace("px", ""));
@@ -287,14 +95,14 @@
             fartSound.setAttribute('src', farts[Math.floor(Math.random() * 3)]);
             fartSound.play().then(() => {
                 party.addSmoke($("#animate").position().left, $("#animate").position().top, (Math.floor(Math.random() * 70) + 10));
-                setTimeout(doNextLine, 750);
+                setTimeout(doNextLine, 1000);
             });
         }
 
         function say(msgtext) {
             var msg = new SpeechSynthesisUtterance(msgtext);
             window.speechSynthesis.speak(msg);
-            setTimeout(doNextLine, 250);
+            setTimeout(doNextLine, 500);
         }
 
         function play() {
@@ -309,9 +117,11 @@
 
         function doNextLine() {
             editor.session.removeMarker(currentMarker);
-            currentMarker = editor.session.addMarker(new Range(currentCodeLine, 1, currentCodeLine, 999999), "runningLine", "fullLine");
-            eval(code.shift());
-            currentCodeLine++;
+            if(code.length>0){
+                currentMarker = editor.session.addMarker(new Range(currentCodeLine, 1, currentCodeLine, 999999), "runningLine", "fullLine");
+                eval(code.shift());
+                currentCodeLine++;
+            }
         }
 
         function insertCode(line) {
@@ -324,15 +134,13 @@
                 row: row,
                 column: 9999,
             }, line);
-
         }
-
     </script>
 </head>
 
 <body>
     <div class="header">
-    Frank The Farting Eyeball
+    Frank Farts
     </div>
     <div class="main_content">
         <div>
@@ -360,13 +168,13 @@
                 </span>
             </nav>
             <div class="box">
+                <canvas id="game"></canvas>
                 <div id="animate">
                     <figure class="ball">
                         <span class="shadow"></span>
                         <span class="iris"></span>
                     </figure>
                 </div>
-                <canvas id="game"></canvas>
             </div>
         </div>
     </div>
@@ -380,8 +188,8 @@
         editor.session.setMode("ace/mode/javascript");
         editor.setBehavioursEnabled(false);
         var Range = ace.require('ace/range').Range;
-        
-        var farts = ["fart1.wav","fart2.mp3","fart3.mp3"];
+
+        var farts = ["assets/fart1.wav","assets/fart2.mp3","assets/fart3.mp3"];
 
         $("#right").click(function() {
             insertCode("right();")
@@ -417,8 +225,6 @@
         canvas.width = 550;
         var party = SmokeMachine(ctx, [109, 122, 38])
         party.start() // start animating
-
     </script>
 </body>
-
 </html>
